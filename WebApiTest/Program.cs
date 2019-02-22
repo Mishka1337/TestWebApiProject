@@ -8,10 +8,6 @@ namespace WebApiTest
     {
         public static void Main(string[] args)
         {
-            Atm.Count100 = 10000;
-            Atm.Count200 = 10000;
-            Atm.Count1000 = 10000;
-            Atm.Count5000 = 10000;
             BuildWebHost(args).Run();
         }
 

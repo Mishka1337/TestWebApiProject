@@ -6,8 +6,9 @@ namespace WebApiTest.Models
     {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Cardholder> CardHolders { get; set; }
+        public DbSet<Atm> Atms { get; set; }
 
-        public DataContext(DbContextOptions<DataContext> options):
+        public DataContext(DbContextOptions<DataContext> options) :
             base(options)
         { }
     }

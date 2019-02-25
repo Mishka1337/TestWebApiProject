@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace WebApiTest.Models
 {
@@ -10,6 +11,8 @@ namespace WebApiTest.Models
 
         public DataContext(DbContextOptions<DataContext> options) :
             base(options)
-        { }
+        {
+           
+        }
     }
 }

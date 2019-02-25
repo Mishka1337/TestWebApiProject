@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.Internal.Networking;
 using WebApiTest.Models;
 
 namespace WebApiTest.Controllers
@@ -9,35 +8,14 @@ namespace WebApiTest.Controllers
 
 
     [Route("api")]
-    public class
-        AccountController : Controller
+    public class AccountController : Controller
     {
         private DataContext _db;
 
         public AccountController(DataContext context)
         {
             _db = context;
-            if (!_db.CardHolders.Any())
-            {
-                _db.CardHolders.Add(new Cardholder { Count100 = 1, Count200 = 2, Count1000 = 0, Count5000 = 0 });
-                _db.CardHolders.Add(new Cardholder { Count100 = 5, Count200 = 42, Count1000 = 200, Count5000 = 228 });
-                _db.SaveChanges();
-            }
-            
-            if (!_db.Atms.Any())
-            {
-                _db.Atms.Add(new Atm {Count100 = 1000, Count200 = 1000, Count1000 = 1000, Count5000 = 1000});
-                _db.Atms.Add(new Atm {Count100 =  1,Count200 = 22,Count1000 = 23,Count5000 = 2});
-                _db.SaveChanges();
-            }
-
-            if (_db.Accounts.Any()) return;
-            _db.Accounts.Add(new Account { CardholderId = 1, Amount = 2228 });
-            _db.Accounts.Add(new Account { Amount = 0, CardholderId = 2 });
-            _db.SaveChanges();
-            
         }
-
         [HttpGet("Cardholder/{id}")]
         public IActionResult GetCardholder(int id)
         {
